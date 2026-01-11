@@ -1,6 +1,30 @@
 ## Emergence-Software Assessment
 SaaS analytics project analyzing revenue, churn, and funnel performance using MySQL, Python, and Tableau. Includes true vs start-month metrics, event-based funnel analysis, and segment-level insights with clear assumptions and documentation.
 
+### Repository Structure
+
+The project follows the structure below:
+
+data/
+- customers.csv
+- subscriptions.csv
+- events.csv
+
+sql/
+1. 01_table_creation.sql
+2. 02_data_cleaning.sql
+3. 03_core_metrics.sql
+4. 04_funnel_analysis.sql
+5. 05_optional_analysis.sql
+
+python/
+- data_validation.ipynb
+
+dashboard/
+- dashboard_screenshots.png
+- dashboard_link.txt
+
+
 ### Task 1: Data Loading & Cleaning
 ##### Overview
 The objective of Task 1 was to ingest three raw CSV datasets (customers, subscriptions, and events) into MySQL and prepare them for downstream SaaS analysis.
