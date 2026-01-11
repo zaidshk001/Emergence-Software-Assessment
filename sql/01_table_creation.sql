@@ -41,28 +41,3 @@ Select * From customers_raw;
 
 /* Empty strings in date columns caused parsing errors during normalization.
 These were explicitly converted to NULL using NULLIF before applying STR_TO_DATE, ensuring no rows were dropped during cleaning */
-
-CREATE TABLE customers_clean AS
-SELECT
-    customer_id,
-    STR_TO_DATE(NULLIF(TRIM(signup_date), ''), '%Y-%m-%d') AS signup_date,
-    TRIM(segment) AS segment,
-    TRIM(country) AS country,
-    CASE
-        WHEN LOWER(is_enterprise) = 'true' THEN 1
-        WHEN LOWER(is_enterprise) = 'false' THEN 0
-        ELSE NULL
-    END AS is_enterprise
-FROM customers_raw;
-Select * From customers_clean;
-
-
-CREATE TABLE subscriptions_clean AS
-SELECT
-    subscription_id,
-    customer_id,
-    STR_TO_DATE(NULLIF(TRIM(start_date), ''), '%Y-%m-%d') AS start_date,
-    STR_TO_DATE(NULLIF(TRIM(end_date), ''), '%Y-%m-%d') AS end_date,
-    CAST(NULLIF(monthly_price, '') AS UNSIGNED) AS monthly_price,
-    LOWER(TRIM(status)) AS status
-FROM subscriptions_raw;
