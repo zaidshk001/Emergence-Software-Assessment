@@ -6,9 +6,9 @@ SaaS analytics project analyzing revenue, churn, and funnel performance using My
 The project follows the structure below:
 
 data/
-- customers.csv
-- subscriptions.csv
-- events.csv
+- customers_clean.csv
+- subscriptions_clean.csv
+- events_clean.csv
 
 sql/
 1. 01_table_creation.sql
